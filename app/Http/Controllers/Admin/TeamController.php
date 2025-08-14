@@ -106,6 +106,7 @@ class TeamController extends Controller
                 'name' => $team->leader->name,
                 'phone' => $team->leader->phone,
                 'email' => $team->leader->email,
+                'address' => $team->leader->participant->institution ?? null,
             ],
             'submission' => $team->submission,
         ];

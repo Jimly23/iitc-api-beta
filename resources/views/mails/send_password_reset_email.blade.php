@@ -50,7 +50,7 @@
         <p>Kami menerima permintaan untuk mereset kata sandi Anda. Klik tombol di bawah ini untuk mereset kata sandi Anda:</p>
         <a href="{{ $resetLink }}" class="button">Reset Kata Sandi</a>
         <p>Jika Anda tidak meminta reset kata sandi, harap abaikan email ini atau hubungi dukungan jika Anda memiliki pertanyaan.</p>
-        <p>Terima kasih,<br>IITC 2024</p>
+        <p>Terima kasih,<br>IITC 2025</p>
     </div>
 </body>
 </html>

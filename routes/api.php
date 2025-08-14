@@ -15,10 +15,12 @@ use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\PasswordResetLinkController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentSeminarController;
 use App\Http\Controllers\PaymentStatusController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SeminarController;
 use App\Http\Controllers\VerifyEmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +66,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::delete('', [CompetitionController::class, 'destroy']);
     });
     Route::post('competitions', [CompetitionController::class, 'store']);
+    Route::get('seminar', [SeminarController::class, 'index']);
+    Route::get('seminar/{userId}', [SeminarController::class, 'tampil']);
+    Route::get('seminar/{userId}/admin', [SeminarController::class, 'show']);
+    Route::post('seminar/{userId}/update', [SeminarController::class, 'update']);
     Route::get('teams', [TeamController::class, 'index']);
     Route::post('teams/{competitionSlug}', [TeamController::class, 'store']);
     Route::get('teams/{teamId}', [TeamController::class, 'show']);
@@ -77,6 +83,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('profile', [ParticipantController::class, 'update']);
     Route::get('competitions/mine', CompetitionMineController::class);
     Route::post('payment/{teamId}', [PaymentController::class, 'store']);
+    Route::post('paymentseminar/{userId}', [PaymentSeminarController::class, 'store']);
     Route::post('payment/{teamId}/payment-status', [PaymentStatusController::class, 'update']);
 
     Route::prefix('events')->group(function () {

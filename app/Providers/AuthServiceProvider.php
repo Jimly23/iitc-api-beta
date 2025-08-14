@@ -11,6 +11,10 @@ use App\Policies\CategoryPolicy;
 use App\Policies\CompetitionPolicy;
 use App\Policies\PaymentPolicy;
 use App\Policies\PaymentStatusPolicy;
+use App\Models\PaymentSeminar;
+use App\Models\PaymentSeminarStatus;
+use App\Policies\PaymentSeminarPolicy;
+use App\Policies\PaymentSeminarStatusPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -29,6 +33,8 @@ class AuthServiceProvider extends ServiceProvider
         Competition::class => CompetitionPolicy::class,
         Payment::class => PaymentPolicy::class,
         PaymentStatus::class => PaymentStatusPolicy::class,
+        PaymentSeminar::class => PaymentSeminarPolicy::class,
+        PaymentSeminarStatus::class => PaymentSeminarStatusPolicy::class,
         User::class => UserPolicy::class,
     ];
 
