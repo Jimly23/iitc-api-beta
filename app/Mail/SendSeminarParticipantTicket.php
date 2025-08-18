@@ -35,7 +35,7 @@ class SendSeminarParticipantTicket extends Mailable implements ShouldQueue
     public function envelope()
     {
         return new Envelope(
-            subject: 'Send Seminar Participant Ticket',
+            subject: 'Pendaftaran Seminar Berhasil',
         );
     }
 

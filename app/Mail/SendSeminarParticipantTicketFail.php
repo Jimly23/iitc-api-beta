@@ -8,26 +8,25 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
-class SendsPasswordResetEmails extends Mailable
+class SendSeminarParticipantTicketFail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $tokenResetPassword;
-    private $receiverName;
-    private $receiverEmail;
+    protected $email;
+    protected $name;
+    protected $reason;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(string $tokenResetPassword, string $receiverName, string $receiverEmail)
+    public function __construct($name, $email, $reason)
     {
-        $this->tokenResetPassword = $tokenResetPassword;
-        $this->receiverName = $receiverName;
-        $this->receiverEmail = $receiverEmail;
+        $this->email = $email;
+        $this->name = $name;
+        $this->reason = $reason;
     }
 
     /**
@@ -38,7 +37,7 @@ class SendsPasswordResetEmails extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Password Reset Emails',
+            subject: 'Pendaftaran Seminar Gagal',
         );
     }
 
@@ -49,12 +48,12 @@ class SendsPasswordResetEmails extends Mailable
      */
     public function content()
     {
-        $resetLink = config('app.web_url') . "/reset-password?token=" . $this->tokenResetPassword . "&email=" . $this->receiverEmail;
         return new Content(
-            view: 'mails.send_password_reset_email',
+            view: 'mails.send_seminar_ticket_fail',
             with: [
-                'resetLink' => $resetLink,
-                'name' => $this->receiverName,
+                'participantName' => $this->name,
+                'participantEmail' => $this->email,
+                'reason' => $this->reason
             ],
         );
     }

@@ -53,14 +53,20 @@
 <body>
     <div class="ticket">
         <div class="header">
-            <h2>Pendaftaran Seminar Berhasil - Tiket Seminar</h2>
-            <p><strong>Investasi Skill dan Pengembangan Karier di Dunia Teknologi</strong></p>
+            <h2>Pendaftaran Seminar Gagal</h2>
+            <p><strong>Mohon maaf {{ $participantName }} anda belum memenuhi persyaratan</strong></p>
+            <p><strong>Catatan:</strong></p>
+            <blockquote>
+                {{ $reason }}
+            </blockquote>
         </div>
         <div class="info">
-            <p><strong>Nama Peserta:</strong> {{ $participantName }}</p>
-            <p><strong>Email:</strong> {{ $participantEmail }}</p>
-            <p><strong>Tanggal:</strong> Sabtu, 27 September 2025</p>
-            <p><strong>Lokasi:</strong> Aula Gedung FBIS Universitas Amikom Purwokerto </p>
+            <ol>
+                <li><strong>Follow Instagram IITC Intermedia</strong></li>
+                <li><strong>Share Infromasi Lomba IITC</strong></li>
+                <li><strong>Share Informasi Seminar</strong></li>
+            </ol>
+            <br>
             <a href="{{ config('app.web_url') }}/dashboard/seminar" 
                 style="display:inline-block;
                         background-color:#4A90E2;
@@ -69,12 +75,12 @@
                         border-radius:5px;
                         text-decoration:none;
                         font-weight:bold;">
-                    Lihat Tiket
+                    Upload Ulang
                 </a>
         </div>
 
         <div class="footer">
-            Terima kasih telah mendaftar. Harap tunjukkan tiket ini saat memasuki lokasi seminar.
+            Terima kasih atas antusiasme anda dalam acara seminar anda. Kami tunggu kehadiran anda.
         </div>
     </div>
 </body>

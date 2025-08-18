@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendSeminarParticipantTicket;
+use App\Mail\SendSeminarParticipantTicketFail;
 use App\Http\Requests\UpdatePaymentSeminarRequest;
 use App\Helpers\PaymentSeminarStatus as PaymentSeminarStatusHelper;
 use App\Models\User;
@@ -116,6 +117,9 @@ class SeminarController extends Controller
 
         if($request->input('isApprove')) {
             Mail::to($user)->queue(new SendSeminarParticipantTicket($user->name, $user->email));
+        } else {
+            Mail::to($user)->queue(new SendSeminarParticipantTicketFail($user->name, $user->email, $paymentStatusData['reason']));
+
         }
 
         $paymentStatus = PaymentSeminarStatus::query()->updateOrCreate(
