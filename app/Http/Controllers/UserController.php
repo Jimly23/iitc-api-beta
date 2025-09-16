@@ -24,6 +24,22 @@ class UserController extends Controller
 
         return response()->json($responseData);
     }
+    
+    public function show(): JsonResponse
+    {
+        // $this->authorize('viewAny', User::class);
+        $users = User::query()->role('User')->with('participant')->get();
+
+        $responseData = [
+            'status' => 1,
+            'message' => 'success get all users',
+            'data' => [
+                'users' => $users,
+            ],
+        ];
+
+        return response()->json($responseData);
+    }
 
     public function destroy(Request $request, string $userId): JsonResponse
     {

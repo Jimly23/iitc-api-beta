@@ -58,6 +58,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     Route::get('users', [UserController::class, 'index']);
+    Route::get('users/participants', [UserController::class, 'show']);
     Route::delete('users/{userId}', [UserController::class, 'destroy']);
 
     Route::prefix('competitions/{slug}')->group(function () {
